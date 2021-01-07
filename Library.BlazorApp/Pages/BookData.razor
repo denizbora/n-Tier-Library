@@ -1,0 +1,66 @@
+﻿@page "/book"
+
+@using Library.BlazorApp.Data
+@using Library.Core.Concrete 
+@using Library.Business.DependencyResolvers
+@inject BookServices BookServices
+
+<h1>Book List</h1>
+<p>
+    <a href="/book/create">Create New</a>
+</p>
+<p>Please check the book list given below </p>
+
+@if (books == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Year</th>
+                <th>Category</th>
+            </tr>
+        </thead>
+        <tbody>
+        @foreach (var book in books.Join(categories,
+                b => b.CategoryId,
+                c => c.CategoryId,
+                (b, c) => new
+                {
+                    Id = b.Id,
+                    Title = b.Title,
+                    Description = b.Description,
+                    Year = b.Year,
+                    Category = c.CategoryName
+                }).ToList())
+            {
+        <tr>
+            <td>@book.Id</td>
+            <td>@book.Title</td>
+            <td>@book.Description</td>
+            <td>@book.Year</td>
+            <td>@book.Category</td>
+            <td>
+
+                <a href='/book/edit/@book.Id'>Edit</a>
+                <a href='/book/delete/@book.Id'>Delete</a>
+            </td>
+        </tr>}
+        </tbody>
+    </table>
+}
+@code {
+    private List<Book> books;
+    private List<Category> categories;
+    protected override async Task OnInitializedAsync()
+    {
+        books = await BookServices.GetBooksAsync();
+        categories = await BookServices.GetCategoryAsync();
+    }
+}

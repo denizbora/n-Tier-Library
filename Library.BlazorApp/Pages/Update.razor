@@ -1,0 +1,137 @@
+﻿@page "/book/edit/{paramBookID:int}"
+
+@using Library.BlazorApp.Data
+@using Library.Business.Abstract
+@using Library.Core.Concrete 
+@using Library.Business.DependencyResolvers
+@using Library.Business.DependencyResolvers.Ninject
+@using System.Linq.Expressions
+@inject BookServices BookServices
+
+<EditForm Model="@book" OnValidSubmit="CreateBook">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+    <table class="form-group">
+        <tr>
+            <td>
+                <label for="Title" class="control-label">Title</label>
+            </td>
+            <td>
+                <input type="text" class="form-control" @bind="book.Title" />
+            </td>
+            <td width="20">&nbsp;</td>
+            <td>
+                <label for="Description" class="control-label">Description</label>
+            </td>
+            <td>
+                <input type="text" class="form-control" @bind="book.Description" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="Year" class="control-label">Year</label>
+            </td>
+            <td>
+                <input type="text" class="form-control" @bind="book.Year" />
+            </td>
+            <td width="20">&nbsp;</td>
+
+            <td>
+                <label for="Category" class="control-label">Category</label>
+            </td>
+            <td>
+                <select asp-for="CategoryId" class="form-control" @bind="book.CategoryId">
+                    <option value="">-- Select Category --</option>
+                    @foreach (var category in categories)
+                    {
+    <option value="@category.CategoryId">@category.CategoryName</option>}
+                </select>
+            </td>
+            <td width="20">&nbsp;</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <button type="submit" class="btn btn-primary">Save</button>
+            </td>
+            <td></td>
+            <td width="20">&nbsp;</td>
+            <td>
+                <button class="btn btn-light" @onclick="Cancel">Cancel</button>
+            </td>
+        </tr>
+    </table>
+</EditForm>
+<h1>Book List</h1>
+
+<p>Please check the book list given below </p>
+
+@if (books == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Year</th>
+                <th>Category</th>
+            </tr>
+        </thead>
+        <tbody>
+        @foreach (var book in books.Join(categories,
+                b => b.CategoryId,
+                c => c.CategoryId,
+                (b, c) => new
+                {
+                    Id = b.Id,
+                    Title = b.Title,
+                    Description = b.Description,
+                    Year = b.Year,
+                    Category = c.CategoryName
+                }).ToList())
+            {
+        <tr>
+            <td>@book.Id</td>
+            <td>@book.Title</td>
+            <td>@book.Description</td>
+            <td>@book.Year</td>
+            <td>@book.Category</td>
+            <td>
+
+                <a href='/book/edit/@book.Id'>Edit</a>
+                <a href='/book/delete/@book.Id'>Delete</a>
+            </td>
+        </tr>}
+        </tbody>
+    </table>
+}
+@code {
+    [Parameter]
+    public int ParamBookID { get; set; }
+    [Inject]
+    public NavigationManager UrlNavigationManager { get; set; }
+    protected Book book =new Book();
+    protected async Task CreateBook()
+    {
+        var bookService = InstanceFactory.GetInstance<IBookService>();
+        bookService.Update(book);
+        UrlNavigationManager.NavigateTo("/book");
+    }
+    protected async Task Cancel()
+    {
+        UrlNavigationManager.NavigateTo("/book");
+    }
+    private List<Book> books;
+    private List<Category> categories;
+    protected override async Task OnInitializedAsync()
+    {
+        books = await BookServices.GetBooksAsync();
+        categories = await BookServices.GetCategoryAsync();
+        book = await BookServices.GetBookAsync(ParamBookID);
+    }
+}
