@@ -1,4 +1,4 @@
-﻿using Library.Core.Concrete;
+﻿using Library.Entities.Concrete;
 using Microsoft.EntityFrameworkCore;
 
 namespace Library.DataAccess.Concrete.EntityFrameworkCore

@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using Library.Business.Abstract;
-using Library.Core.Concrete;
 using Library.DataAccess.Abstract;
+using Library.Entities.Concrete;
 
 namespace Library.Business.Concrete
 {

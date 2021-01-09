@@ -2,8 +2,8 @@
 
 @using Library.BlazorApp.Data
 @using Library.Business.Abstract
-@using Library.Core.Concrete
 @using Library.Business.DependencyResolvers.Ninject
+@using Library.Entities.Concrete
 @inject BookServices BookServices
 
 <EditForm Model="@book" OnValidSubmit="CreateBook">

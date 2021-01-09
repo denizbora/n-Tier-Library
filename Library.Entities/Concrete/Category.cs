@@ -1,6 +1,6 @@
-﻿using Library.Core.Abstract;
+﻿using Library.Entities.Abstract;
 
-namespace Library.Core.Concrete
+namespace Library.Entities.Concrete
 {
     public class Category : IEntity
     {

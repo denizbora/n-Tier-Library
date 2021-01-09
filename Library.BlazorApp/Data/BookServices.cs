@@ -1,11 +1,11 @@
 ﻿using Library.Business.Abstract;
 using Library.Business.DependencyResolvers.Ninject;
-using Library.Core.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
+using Library.Entities.Concrete;
 
 namespace Library.BlazorApp.Data
 {

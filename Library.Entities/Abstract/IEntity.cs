@@ -1,4 +1,4 @@
-﻿namespace Library.Core.Abstract
+﻿namespace Library.Entities.Abstract
 {
     public interface IEntity
     {

@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
-using Library.Core.Concrete;
 using Library.DataAccess.Abstract;
+using Library.Entities.Concrete;
 using Microsoft.Data.SqlClient;
 
 namespace Library.DataAccess.Concrete.ADONET

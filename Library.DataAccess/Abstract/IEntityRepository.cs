@@ -1,7 +1,7 @@
-﻿using Library.Core.Abstract;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
+using Library.Entities.Abstract;
 
 namespace Library.DataAccess.Abstract
 {
