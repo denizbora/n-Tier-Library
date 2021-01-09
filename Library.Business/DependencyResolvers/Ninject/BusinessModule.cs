@@ -3,9 +3,6 @@ using Library.Business.Concrete;
 using Library.DataAccess.Abstract;
 using Library.DataAccess.Concrete.EntityFrameworkCore;
 using Ninject.Modules;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Library.Business.DependencyResolvers.Ninject
 {

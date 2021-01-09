@@ -1,9 +1,6 @@
-﻿using System;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Linq;
 using Library.Business.Abstract;
 using Library.Business.DependencyResolvers.Ninject;
-using Library.Core.Concrete;
 using Library.DataAccess.Concrete.ADONET;
 
 namespace Library.Console
