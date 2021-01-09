@@ -22,7 +22,7 @@ else
                 <th>Id</th>
                 <th>Title</th>
                 <th>Description</th>
-                <th>Year</th>
+                <th>Price</th>
                 <th>Category</th>
             </tr>
         </thead>
@@ -35,7 +35,7 @@ else
                     Id = b.Id,
                     Title = b.Title,
                     Description = b.Description,
-                    Year = b.Year,
+                    Price = b.Price,
                     Category = c.CategoryName
                 }).ToList())
             {
@@ -43,7 +43,7 @@ else
             <td>@book.Id</td>
             <td>@book.Title</td>
             <td>@book.Description</td>
-            <td>@book.Year</td>
+            <td>@book.Price</td>
             <td>@book.Category</td>
             <td>
 

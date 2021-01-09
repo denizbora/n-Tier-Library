@@ -32,7 +32,7 @@ namespace Library.DataAccess.Concrete.ADONET
                     Id = Convert.ToInt32(reader[0]),
                     Title = reader[1].ToString(),
                     Description = reader[2].ToString(),
-                    Year = int.Parse(reader[3].ToString()),
+                    Price = Convert.ToDecimal(reader[3]),
                     CategoryId = Convert.ToInt32(reader[4])
                 };
 
@@ -54,7 +54,7 @@ namespace Library.DataAccess.Concrete.ADONET
                     Id = Convert.ToInt32(reader[0]),
                     Title = reader[1].ToString(),
                     Description = reader[2].ToString(),
-                    Year = int.Parse(reader[3].ToString()),
+                    Price = Convert.ToDecimal(reader[3]),
                     CategoryId = Convert.ToInt32(reader[4])
                 };
 
@@ -66,11 +66,11 @@ namespace Library.DataAccess.Concrete.ADONET
         public void Add(Book entity)
         {
             using (SqlCommand cmd =
-                new SqlCommand("INSERT INTO Books (Title,Description, Year, CategoryId) VALUES (@Title,@Description, @Year, @CategoryId)"))
+                new SqlCommand("INSERT INTO Books (Title,Description, Price, CategoryId) VALUES (@Title,@Description, @Price, @CategoryId)"))
             {
                 cmd.Parameters.AddWithValue("Title", entity.Title);
                 cmd.Parameters.AddWithValue("Description", entity.Description);
-                cmd.Parameters.AddWithValue("Year", entity.Year);
+                cmd.Parameters.AddWithValue("Price", entity.Price);
                 cmd.Parameters.AddWithValue("CategoryId", entity.CategoryId);
                 VTYS.SqlExecuteNonQuery(cmd);
             }
@@ -79,12 +79,12 @@ namespace Library.DataAccess.Concrete.ADONET
         public void Update(Book entity)
         {
             using (SqlCommand cmd =
-                new SqlCommand("UPDATE Books set Title = @Title, Description = @Description, Year = @Year, CategoryId = @CategoryId where Id = @Id"))
+                new SqlCommand("UPDATE Books set Title = @Title, Description = @Description, Price = @Price, CategoryId = @CategoryId where Id = @Id"))
             {
                 cmd.Parameters.AddWithValue("Id", entity.Id);
                 cmd.Parameters.AddWithValue("Title", entity.Title);
                 cmd.Parameters.AddWithValue("Description", entity.Description);
-                cmd.Parameters.AddWithValue("Year", entity.Year);
+                cmd.Parameters.AddWithValue("Price", entity.Price);
                 cmd.Parameters.AddWithValue("CategoryId", entity.CategoryId);
                 VTYS.SqlExecuteNonQuery(cmd);
             }

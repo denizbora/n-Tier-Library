@@ -27,10 +27,10 @@
         </tr>
         <tr>
             <td>
-                <label for="Year" class="control-label">Year</label>
+                <label for="Price" class="control-label">Price</label>
             </td>
             <td>
-                <input type="text" class="form-control" @bind="book.Year" />
+                <input type="text" class="form-control" @bind="book.Price" />
             </td>
             <td width="20">&nbsp;</td>
 
@@ -76,7 +76,7 @@ else
                 <th>Id</th>
                 <th>Title</th>
                 <th>Description</th>
-                <th>Year</th>
+                <th>Price</th>
                 <th>Category</th>
             </tr>
         </thead>
@@ -89,7 +89,7 @@ else
                     Id = b.Id,
                     Title = b.Title,
                     Description = b.Description,
-                    Year = b.Year,
+                    Price = b.Price,
                     Category = c.CategoryName
                 }).ToList())
             {
@@ -97,7 +97,7 @@ else
             <td>@book.Id</td>
             <td>@book.Title</td>
             <td>@book.Description</td>
-            <td>@book.Year</td>
+            <td>@book.Price</td>
             <td>@book.Category</td>
             <td>
 
