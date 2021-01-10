@@ -1,13 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 using Library.DataAccess.Abstract;
 using Library.Entities.Concrete;
 using Microsoft.Data.SqlClient;
 
 namespace Library.DataAccess.Concrete.ADONET
 {
-    public class ADOCategoryDal:IADORepository<Category>
+    public class ADOCategoryDal:ICategoryDal
     {
+        public List<Category> GetAll(Expression<Func<Category, bool>> filter = null)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Category Get(Expression<Func<Category, bool>> filter)
+        {
+            throw new NotImplementedException();
+        }
+
         public void Add(Category entity)
         {
             using (SqlCommand cmd = new SqlCommand("INSERT INTO Categories VALUES (@CategoryName)"))

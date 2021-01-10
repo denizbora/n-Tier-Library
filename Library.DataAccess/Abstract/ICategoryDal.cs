@@ -3,7 +3,7 @@
 namespace Library.DataAccess.Abstract
 {
     public interface ICategoryDal : 
-        IEntityRepository<Category>
+        IEntityRepository<Category>,IADORepository<Category>
     {
 
     }

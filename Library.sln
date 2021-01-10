@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Library.Business", "Library
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Library.DataAccess", "Library.DataAccess\Library.DataAccess.csproj", "{6C94BEC3-05F6-4E5A-812E-37A708D955F1}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Library.Console", "Library.Console\Library.Console.csproj", "{CDDE226E-A844-4D05-A9C4-A9BE11A335ED}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Library.ConsoleApp", "Library.Console\Library.ConsoleApp.csproj", "{CDDE226E-A844-4D05-A9C4-A9BE11A335ED}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Library.Entities", "Library.Entities\Library.Entities.csproj", "{58C4A191-6C4F-4C0A-9F29-B84AF0028050}"
 EndProject

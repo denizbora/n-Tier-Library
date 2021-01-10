@@ -1,20 +1,21 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using Library.Business.Abstract;
 using Library.Business.DependencyResolvers.Ninject;
 using Library.DataAccess.Concrete.ADONET;
 
-namespace Library.Console
+namespace Library.ConsoleApp
 {
     class Program
     {
         static void Main(string[] args)
         {
-            new ADOBookDal().GetAll().ToList().ForEach(b=>System.Console.WriteLine(b.Title));
+            new ADOBookDal().GetAll().ToList().ForEach(b=>Console.WriteLine(b));
             var book = new ADOBookDal().Get(1);
-            System.Console.WriteLine(book.Title);
-            new ADOCategoryDal().GetAll().ToList().ForEach(c=>System.Console.WriteLine(c.CategoryName));
+            Console.WriteLine(book);
+            new ADOCategoryDal().GetAll().ToList().ForEach(c=>Console.WriteLine(c));
             var bookService = InstanceFactory.GetInstance<IBookService>();
-            bookService.GetAll().ForEach(b=>System.Console.WriteLine(b.Title));
+            bookService.GetAll().ForEach(b=>Console.WriteLine(b));
         }
     }
 }
